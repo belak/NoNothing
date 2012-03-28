@@ -1,0 +1,7 @@
+enabled: true
+global: false
+
+disable:
+  hunger: true
+  damage: true
+  exhaustion: true

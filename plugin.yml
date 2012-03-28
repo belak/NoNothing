@@ -1,0 +1,32 @@
+name: NoNothing
+main: com.codebelak.nonothing.NoNothing
+author: Kaleb Elwert
+version: 1.13
+commands:
+    nonothing:
+        loadconfig:
+            description: Load and use the config.
+            usage: /no loadconfig
+        usage: |
+           /nonothing loadconfig
+permissions:
+    enabled:
+        description: Should the plugin do anything?
+        default: true
+    global:
+        description: Use no.* values in config for everyone
+        default: false
+    disable:
+        children:
+            disable.hunger: false
+            disable.exhaustion: false
+            disable.damage: false
+    disable.hunger:
+        description: Never starve again.
+        default: false
+    disable.exhaustion:
+        description: Infinite sprinting.
+        default: false
+    disable.damage:
+        description: Never receive damage.
+        default: false
