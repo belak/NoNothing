@@ -1,8 +1,20 @@
+# Whether or not the plugin is enabled
 enabled: true
+
+# This makes the below options global,
+# essentially using the config file for options
 global: false
 
+# Each option disables something specific
 disable:
+  # Hunger damage
   hunger: true
+
+  # All damage
   damage: true
+
+  # Exhaustion (run forever)
   exhaustion: true
+
+  # Makes monsters unable to target you
   target: true

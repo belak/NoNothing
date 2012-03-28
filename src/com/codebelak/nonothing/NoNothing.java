@@ -39,8 +39,8 @@ public class NoNothing extends JavaPlugin {
 	
 	Logger log = Logger.getLogger("Minecraft");
 
-	// plugin name in square brackets, can be set as identifier in front of a
-	// message: [DynamicShop] blabla
+	// Plugin name in square brackets, can be set as
+	// identifier in front of a message: [NoNothing]
 	public String name;
 
 	public void onDisable() {
@@ -76,31 +76,29 @@ public class NoNothing extends JavaPlugin {
 			saveConfig();
 			sender.sendMessage(name + "Config saved.");
 			return true;
-		} else if (args.length > 2) {
-			if (args[0].equalsIgnoreCase("set")) {				
-				if (args[1].equalsIgnoreCase("global")) {
-					config.set("global", new Boolean(args[2]));
-				} else if (args[1].equalsIgnoreCase("enabled")) {
-					config.set("enabled", new Boolean(args[2]));
-				} else if (args[1].equalsIgnoreCase("disable-hunger")) {
-					config.set("disable.hunger", new Boolean(args[2]));
-				} else if (args[1].equalsIgnoreCase("disable-damage")) {
-					config.set("disable.damage", new Boolean(args[2]));
-				} else if (args[1].equalsIgnoreCase("disable-exhaustion")) {
-					config.set("disable.exhaustion", new Boolean(args[2]));
-				}
-			} else if (args[0].equalsIgnoreCase("get")) {
-				if (args[1].equalsIgnoreCase("global")) {
-					sender.sendMessage(name + "Global: " + config.getBoolean("global"));
-				} else if (args[1].equalsIgnoreCase("enabled")) {
-					sender.sendMessage(name + "Enabled: " + config.getBoolean("enabled"));
-				} else if (args[1].equalsIgnoreCase("hunger")) {
-					sender.sendMessage(name + "disable.hunger: " + config.getBoolean("disable.hunger"));
-				} else if (args[1].equalsIgnoreCase("damage")) {
-					sender.sendMessage(name + "disable.damage: " + config.getBoolean("disable.damage"));
-				} else if (args[1].equalsIgnoreCase("exhaustion")) {
-					sender.sendMessage(name + "disable.exhaustion: " + config.getBoolean("disable.exhaustion"));
-				}
+		} else if (args.length > 2 && args[0].equalsIgnoreCase("set")) {				
+			if (args[1].equalsIgnoreCase("global")) {
+				config.set("global", new Boolean(args[2]));
+			} else if (args[1].equalsIgnoreCase("enabled")) {
+				config.set("enabled", new Boolean(args[2]));
+			} else if (args[1].equalsIgnoreCase("disable-hunger")) {
+				config.set("disable.hunger", new Boolean(args[2]));
+			} else if (args[1].equalsIgnoreCase("disable-damage")) {
+				config.set("disable.damage", new Boolean(args[2]));
+			} else if (args[1].equalsIgnoreCase("disable-exhaustion")) {
+				config.set("disable.exhaustion", new Boolean(args[2]));
+			}
+		} else if (args.length > 1 && args[0].equalsIgnoreCase("get")) {
+			if (args[1].equalsIgnoreCase("global")) {
+				sender.sendMessage(name + "Global: " + config.getBoolean("global"));
+			} else if (args[1].equalsIgnoreCase("enabled")) {
+				sender.sendMessage(name + "Enabled: " + config.getBoolean("enabled"));
+			} else if (args[1].equalsIgnoreCase("hunger")) {
+				sender.sendMessage(name + "disable.hunger: " + config.getBoolean("disable.hunger"));
+			} else if (args[1].equalsIgnoreCase("damage")) {
+				sender.sendMessage(name + "disable.damage: " + config.getBoolean("disable.damage"));
+			} else if (args[1].equalsIgnoreCase("exhaustion")) {
+				sender.sendMessage(name + "disable.exhaustion: " + config.getBoolean("disable.exhaustion"));
 			}
 		}
 
@@ -108,15 +106,18 @@ public class NoNothing extends JavaPlugin {
 	}
 	
 	protected boolean checkPermissions(CommandSender sender, String permission) {
-		if (!(sender instanceof Player))
-			return true;
-		Player player = (Player) sender;
-
-		if (config.getBoolean("global")) {
-			if (config.getBoolean(permission.toLowerCase(Locale.ENGLISH), false))
+		if (config.getBoolean("enabled")) {
+			// TODO: Make sure this is really needed - do we want to give Entities that aren't players all these permissions
+			if (!(sender instanceof Player))
 				return true;
-		} else if (player.hasPermission("nonothing." + permission.toLowerCase(Locale.ENGLISH))) {
-			return true;
+			Player player = (Player) sender;
+	
+			if (config.getBoolean("global")) {
+				if (config.getBoolean(permission.toLowerCase(Locale.ENGLISH), false))
+					return true;
+			} else if (player.hasPermission("nonothing." + permission.toLowerCase(Locale.ENGLISH))) {
+				return true;
+			}
 		}
 		
 		return false;

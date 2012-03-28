@@ -1,7 +1,7 @@
 name: NoNothing
 main: com.codebelak.nonothing.NoNothing
 author: Kaleb Elwert
-version: 1.13
+version: '1.13-Beta'
 commands:
     nonothing:
         loadconfig:
@@ -21,6 +21,7 @@ permissions:
             disable.hunger: false
             disable.exhaustion: false
             disable.damage: false
+            disable.target: false
     disable.hunger:
         description: Never starve again.
         default: false
@@ -29,4 +30,7 @@ permissions:
         default: false
     disable.damage:
         description: Never receive damage.
+        default: false
+    disable.target:
+        description: Never get targeted by monsters.
         default: false

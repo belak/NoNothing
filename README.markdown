@@ -5,26 +5,44 @@ With 3 permissions you can disable hunger (So you never have to eat again), disa
 If you do not want to use permissions, you can create a config file, see below.
 Very lightweight, no files are created! (If you use permissions)
 
-## NOTE
-
-This readme is out of date - updates coming soon for v1.13
-
 ## Permissions
 
-- nonothing.nohunger - Disables Hunger
-- nonothing.nodamage - Never receive damage any more
-- nonothing.noexhaustion - Sprint forever
+- nonothing.admin - allows use of the commands
+- nonothing.disable.hunger - Disables Hunger
+- nonothing.disable.damage - Never receive damage any more
+- nonothing.disable.exhaustion - Sprint forever
+- nonothing.disable.target - Make monsters unable to see this target
 
-## If you don't use permissions
+## Config
 
-No problem! Just type in "/nonothing loadconfig" and a configuration file will be created, in which you can turn on and off hunger, damage and exhaustion. With this solution all people with permissions do not have to use files, but additionally you don' have to use permissions. Permissions are still used with the config, so if the config disables for example nohunger, but you have the permission, you will not starve. To disable the config, just delete it and reload the plugin.
+When you start NoNothing for the first time, a config file should be created. There are only a few options right now.
+
+The main options are enable (which enables or disables the plugin) and global (which enables or disables use of the config file for all checks).
+The rest of the options are only available when global is true. They are disable.hunger, disable.damage, disable.exhaustion, and disable.target.
+These all work the same as permissions, but globally.
+
+## Commands
+
+All commands are prefixed with either nonothing, or no.
+
+- no set [enable|global|disable-hunger|disable-damage|disable-ehxaustion|disable-target] [true|false] - sets an option in config until the server is reloaded
+- no get [enable|global|hunger|damage|ehxaustion|target] - displays an option in config
+- no save - saves any temporary changes with no set to the config file
+- no load - loads any changes in the config file into memory
+
+## Coming Soon
+
+- More options to ignore mobs
+- Options to change how disabling hunger works
 
 ## Changelog
 
-### Version 1.13:
+### Version 1.13-beta:
 
 - Updated to Bukkit build 1.2.4-R0.1
-- This has been done in source, not actually released yet
+- Restructured plugin
+- Added admin commands
+- Added an option to make most monsters not target players
 
 ### Version 1.12:
 

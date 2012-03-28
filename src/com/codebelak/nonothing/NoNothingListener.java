@@ -75,7 +75,7 @@ public class NoNothingListener implements Listener {
 	}
 	
 	// Make it so mobs can't target the player
-	// NOTE: This is probably broken - all mobs will be able to target them
+	// NOTE: This is probably broken - It currently only affects anything that implements entity.Monster
 	@EventHandler
 	public void onTargetLivingEntity(EntityTargetLivingEntityEvent event) {
 		if (event.getTarget() instanceof Player && event.getEntity() instanceof Monster) {
