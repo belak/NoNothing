@@ -22,10 +22,12 @@
 package com.codebelak.nonothing;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
@@ -67,6 +69,20 @@ public class NoNothingListener implements Listener {
 				// eat something, so set it just 19
 				event.setFoodLevel(19);
 				
+				event.setCancelled(true);
+			}
+		}
+	}
+	
+	// Make it so mobs can't target the player
+	// NOTE: This is probably broken - all mobs will be able to target them
+	@EventHandler
+	public void onTargetLivingEntity(EntityTargetLivingEntityEvent event) {
+		if (event.getTarget() instanceof Player && event.getEntity() instanceof Monster) {
+			Player player = (Player) event.getEntity();
+			
+			// Stop the target
+			if (plugin.checkPermissions((CommandSender) player, "disable.target")) {
 				event.setCancelled(true);
 			}
 		}

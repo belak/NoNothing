@@ -5,3 +5,4 @@ disable:
   hunger: true
   damage: true
   exhaustion: true
+  target: true
