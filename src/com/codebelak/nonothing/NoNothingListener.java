@@ -22,8 +22,10 @@
 package com.codebelak.nonothing;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Ghast;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -65,8 +67,10 @@ public class NoNothingListener implements Listener {
 				player.setExhaustion(0);
 				
 				// TODO: Possibly change this later so the food doesn't shake - or make an option
-				// With maximum food level (20) the player would be unable to
+				
+				// NOTE: With maximum food level (20) the player would be unable to
 				// eat something, so set it just 19
+				
 				event.setFoodLevel(19);
 				
 				event.setCancelled(true);
@@ -75,11 +79,11 @@ public class NoNothingListener implements Listener {
 	}
 	
 	// Make it so mobs can't target the player
-	// NOTE: This is probably broken - It currently only affects anything that implements entity.Monster
+	// We don't handle the ender dragon...
 	@EventHandler
 	public void onTargetLivingEntity(EntityTargetLivingEntityEvent event) {
-		if (event.getTarget() instanceof Player && event.getEntity() instanceof Monster) {
-			Player player = (Player) event.getEntity();
+		if (event.getTarget() instanceof Player && (event.getEntity() instanceof Monster || event.getEntity() instanceof Ghast || event.getEntity() instanceof Slime)) {
+			Player player = (Player) event.getTarget();
 			
 			// Stop the target
 			if (plugin.checkPermissions((CommandSender) player, "disable.target")) {

@@ -1,9 +1,7 @@
 # NoNothing
 
-This plugin is simple, but very efficient!
-With 3 permissions you can disable hunger (So you never have to eat again), disable any kind of damage or you can sprint for an infinite time.
-If you do not want to use permissions, you can create a config file, see below.
-Very lightweight, no files are created! (If you use permissions)
+This plugin aims to (eventually) be a replacement for ModifyWorld. With permissions, you can disable hunger, damage, exhaustion while sprinting, and mob targeting.
+If you don't want to use permissions, you can use a config file to enable options globally.
 
 ## Permissions
 
@@ -12,6 +10,10 @@ Very lightweight, no files are created! (If you use permissions)
 - nonothing.disable.damage - Never receive damage any more
 - nonothing.disable.exhaustion - Sprint forever
 - nonothing.disable.target - Make monsters unable to see this target
+
+Note that disabling targeting does not disable damage from mobs.
+Also, some of the mobs seem to ignore this, such as spiders. This is being looked into for the next release.
+The ender dragon can also still target you.
 
 ## Config
 
@@ -37,7 +39,7 @@ All commands are prefixed with either nonothing, or no.
 
 ## Changelog
 
-### Version 1.13-beta:
+### Version 1.13:
 
 - Updated to Bukkit build 1.2.4-R0.1
 - Restructured plugin
@@ -60,3 +62,7 @@ All commands are prefixed with either nonothing, or no.
 ### Version 1.0:
 
 - Initial release
+
+## Source Code
+
+Interested in hacking on NoNothing, or providing a patch? The source code can be found on [Github](https://github.com/belak/NoNothing).
