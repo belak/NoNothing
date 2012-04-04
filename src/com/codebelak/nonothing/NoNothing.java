@@ -115,7 +115,7 @@ public class NoNothing extends JavaPlugin {
 			if (config.getBoolean("global")) {
 				if (config.getBoolean(permission.toLowerCase(Locale.ENGLISH), false))
 					return true;
-			} else if (player.hasPermission("nonothing." + permission.toLowerCase(Locale.ENGLISH))) {
+			} else if (config.getBoolean(permission.toLowerCase(Locale.ENGLISH), false) && player.hasPermission("nonothing." + permission.toLowerCase(Locale.ENGLISH))) {
 				return true;
 			}
 		}

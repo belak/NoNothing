@@ -3,6 +3,8 @@ enabled: true
 
 # This makes the below options global,
 # essentially using the config file for options
+# If this is false, the options below enable
+# and disable the checks for permissions 
 global: false
 
 # Each option disables something specific

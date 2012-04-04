@@ -1,7 +1,7 @@
 name: NoNothing
 main: com.codebelak.nonothing.NoNothing
 author: Kaleb Elwert
-version: '1.13'
+version: '1.14'
 commands:
     nonothing:
         loadconfig:
