@@ -39,6 +39,11 @@ All commands are prefixed with either nonothing, or no.
 
 ## Changelog
 
+### Version 1.14:
+
+- Updated to Bukkit build 1.2.5-R1.0
+- If global in config is false, the disable.* options will disable that option globaly (if set to false)
+
 ### Version 1.13:
 
 - Updated to Bukkit build 1.2.4-R0.1
